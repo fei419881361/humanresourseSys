@@ -102,4 +102,20 @@ public class SysDep {
     public void setOperatorId(Integer operatorId) {
         this.operatorId = operatorId;
     }
+
+    @Override
+    public String toString() {
+        return "SysDep{" +
+                "id=" + id +
+                ", createDate=" + createDate +
+                ", modifyDate=" + modifyDate +
+                ", name='" + name + '\'' +
+                ", level=" + level +
+                ", seq=" + seq +
+                ", remark='" + remark + '\'' +
+                ", parentId=" + parentId +
+                ", operatorId=" + operatorId +
+                ", peopleNum=" + peopleNum +
+                '}';
+    }
 }

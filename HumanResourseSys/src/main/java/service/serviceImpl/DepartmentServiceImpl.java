@@ -32,4 +32,24 @@ public class DepartmentServiceImpl implements DepartmentService{
     public Integer getAllCount() {
         return sysDepMapper.getAllCount();
     }
+
+    @Override
+    public boolean register(SysDep dep) {
+        return sysDepMapper.insert(dep)>0;
+    }
+
+    @Override
+    public boolean remove(Integer id) {
+        return sysDepMapper.deleteByPrimaryKey(id)>0;
+    }
+
+    @Override
+    public SysDep findByID(Integer depId) {
+        return sysDepMapper.selectByPrimaryKey(depId);
+    }
+
+    @Override
+    public SysDep selectByName(String name) {
+        return sysDepMapper.selectByName(name);
+    }
 }

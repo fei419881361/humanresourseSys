@@ -1,5 +1,7 @@
 package entity;
 
+import vo.RecruitmentVO;
+
 import java.util.Date;
 
 public class Recruitment {
@@ -22,6 +24,29 @@ public class Recruitment {
     private Date createDate;
 
     private Date modifyDate;
+
+    private String phone;
+
+    public Recruitment(){}
+
+    public Recruitment(RecruitmentVO vo){
+        this.id = vo.getId();
+        this.name = vo.getName();
+        this.gender = vo.getGender();
+        this.education = vo.getEducation();
+        this.phone = vo.getPhone();
+        this.workExperience = vo.getWorkExperience();
+        this.major = vo.getMajor();
+        this.hire = vo.getHire();
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public Integer getId() {
         return id;

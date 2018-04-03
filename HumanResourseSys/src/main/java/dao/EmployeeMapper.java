@@ -27,4 +27,8 @@ public interface EmployeeMapper {
     int updateByPrimaryKeySelective(Employee record);
 
     int updateByPrimaryKey(Employee record);
+
+    Integer getAllCount();
+
+    List<Employee> findAllBySplit(@Param("currentPage") Integer currentPage,@Param("lineSize") Integer lineSize);
 }

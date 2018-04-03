@@ -28,7 +28,7 @@
         <img  src="images/login/bike.png" height="75px">
     </div>
     <div style="position:absolute; left: 35%;top: 5px">
-        <p  style="font-family: MyNewFont"><font color="#4ac9ff" size="5px">Teacher</font><font size="5px" color="#ff508b">HumanResourse</font><font color="#" size="4px">&nbsp;人力资源管理系统</font></p>
+        <p  style="font-family: MyNewFont"><font color="#4ac9ff" size="5px">HumanResourse</font><font size="5px" color="#ff508b">System</font><font color="#" size="4px">&nbsp;人力资源管理系统</font></p>
     </div>
     <div id="loginDiv" style="position:absolute;right:10px;top:10px">
         欢迎你登录,管理员${aname}
@@ -52,14 +52,14 @@
                 <li><a href="javascript:void(0)" pageUrl="lookDep.jsp">部门列表</a></li>
             </ul>
         </div>
-        <div title="员工管理" data-options="iconCls:'icon-add',selected:true" style="overflow: auto;padding: 10px">
+        <div title="员工管理" data-options="iconCls:'icon-add'" style="overflow: auto;padding: 10px">
             <ul>
-                <li><a href="javascript:void(0)" pageUrl="lookRollcall.jsp">员工列表</a></li>
+                <li><a href="javascript:void(0)" pageUrl="lookEmp.jsp">员工列表</a></li>
             </ul>
         </div>
         <div title="招聘管理" data-options="iconCls:'icon-add'" style="overflow: auto;padding: 10px">
             <ul>
-                <li><a href="javascript:void(0)" pageUrl="upClassTable.jsp">招聘信息列表</a></li>
+                <li><a href="javascript:void(0)" pageUrl="lookRec.jsp">招聘信息列表</a></li>
             </ul>
         </div>
         <div title="培训信息管理" data-options="iconCls:'icon-add'" style="overflow: auto;padding: 10px">

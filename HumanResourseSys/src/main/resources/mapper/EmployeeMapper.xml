@@ -367,4 +367,12 @@
       status = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="getAllCount" resultType="java.lang.Integer">
+    SELECT COUNT(*) FROM employee
+  </select>
+
+  <select id="findAllBySplit" resultMap="BaseResultMap">
+    select * from employee limit #{currentPage},#{lineSize}
+  </select>
 </mapper>

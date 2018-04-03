@@ -106,10 +106,10 @@
   <insert id="insert" parameterType="entity.SysDep">
     insert into sys_dep (id, create_date, modify_date, 
       name, level, seq, remark, 
-      parent_id, operator_id)
+      parent_id, operator_id,people_num)
     values (#{id,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, #{modifyDate,jdbcType=TIMESTAMP}, 
       #{name,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}, #{seq,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
-      #{parentId,jdbcType=INTEGER}, #{operatorId,jdbcType=INTEGER})
+      #{parentId,jdbcType=INTEGER}, #{operatorId,jdbcType=INTEGER} , #{peopleNum,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="entity.SysDep">
     insert into sys_dep
@@ -278,5 +278,12 @@
 
   <select id="getAllCount" resultType="java.lang.Integer">
     SELECT COUNT(*) FROM sys_dep
+  </select>
+
+  <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_dep
+    where name = #{name}
   </select>
 </mapper>

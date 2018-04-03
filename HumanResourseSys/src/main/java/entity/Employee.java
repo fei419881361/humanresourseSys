@@ -1,5 +1,7 @@
 package entity;
 
+import vo.EmployeeVO;
+
 import java.util.Date;
 
 public class Employee {
@@ -32,6 +34,44 @@ public class Employee {
     private String major;
 
     private Integer status;
+
+    public Employee(){}
+
+    public Employee(EmployeeVO vo){
+        this.id = vo.getId();
+        this.name = vo.getName();
+        this.gender = vo.getGender();
+        this.birthday = vo.getBirthday();
+        this.idCard = vo.getIdCard();
+        this.position = vo.getPosition();
+        this.education = vo.getEducation();
+        this.phone = vo.getPhone();
+        this.workTime = vo.getWorkTime();
+        this.remark = vo.getRemark();
+        this.major = vo.getMajor();
+        this.status = vo.getStatus();
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", createDate=" + createDate +
+                ", modifyDate=" + modifyDate +
+                ", name='" + name + '\'' +
+                ", gender=" + gender +
+                ", birthday='" + birthday + '\'' +
+                ", idCard='" + idCard + '\'' +
+                ", depId=" + depId +
+                ", position='" + position + '\'' +
+                ", education='" + education + '\'' +
+                ", phone='" + phone + '\'' +
+                ", workTime='" + workTime + '\'' +
+                ", remark='" + remark + '\'' +
+                ", major='" + major + '\'' +
+                ", status=" + status +
+                '}';
+    }
 
     public Integer getId() {
         return id;

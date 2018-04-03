@@ -31,4 +31,6 @@ public interface SysDepMapper {
     List<SysDep> findAllBySplit(@Param("currentPage") Integer currentPage, @Param("lineSize") Integer lineSize);
 
     Integer getAllCount();
+
+    SysDep selectByName(String name);
 }

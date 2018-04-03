@@ -29,33 +29,13 @@
                 <%--<input type="hidden"  id = "sgrade" name = "sgrade">--%>
 
                 <tr class="mTr">
-                    <td>学号：</td><td><input id="oSid"  data-options="required:true,validType:'length[0,30]'" class="easyui-validatebox" type ="text" name ="sid" /></td>
+                    <td>部门名称：</td><td><input id="oName"  data-options="required:true,validType:'length[0,30]'" class="easyui-validatebox" type ="text" name ="name" /></td>
                 </tr>
 
                 <tr class="mTr">
-                    <td>姓名：</td><td><input id="oSname"  data-options="required:true,validType:'length[0,30]'" class="easyui-validatebox" type ="text" name ="sname" /></td>
+                    <td>部门备注：</td><td><textarea id="oRemark"  cols="22" rows="10" data-options="required:false,validType:'length[0,200]'" class="easyui-validatebox" name ="remark"></textarea></td>
                 </tr>
 
-                <tr class="mTr">
-                    <td>班级：</td><td><input id="oSclass" data-options="required:true,validType:'length[0,30]'" class="easyui-validatebox" type ="text" name ="sclass" /></td>
-                </tr>
-
-                <tr class="mTr">
-                    <td>年级：</td><td><input id="oSgrade" data-options="required:true,validType:'length[0,30]'" class="easyui-validatebox" type ="text" name ="sgrade" /></td>
-                </tr>
-
-                <tr class="mTr">
-                    <td>初始密码：</td><td><input id="oSpwd"  data-options="required:true,validType:'length[0,30]'" class="easyui-validatebox" type ="password" name ="pwd" /></td>
-                </tr>
-                <tr class="mTr">
-                <td>性别：</td>
-                <td>
-                    <select id="oSex" class="easyui-combobox" data-options="editable:false,required:true"  name="sex" style="width:60px;">
-                        <option value="1">男</option>
-                        <option value="2">女</option>
-                    </select>
-                </td>
-                </tr>
                 <tr class="mTr">
                     <td>
                         <a id = "submitBtn" href="javascript:void(0);" class="easyui-linkbutton" data-options="text:'保存',iconCls:'icon-save',plain:true"/>
@@ -85,24 +65,24 @@
             columns:[[
                 {field:"id",title:"部门编号",width:250,align:'center'},
                 {field:"name",title:"名称",width:250,align:'center'},
-                {field:"people_num",title:"部门人数",width:250,align:'center'},
-                {field:"create_date",title:"创建时间",width:250,align:'center'},
+                {field:"peopleNum",title:"部门人数",width:250,align:'center'},
+                {field:"createDate",title:"创建时间",width:250,align:'center'},
                 {field:"remark",title:"备注",width:250,align:'center'}
             ]],
             pagination:true,
             toolbar:"#toolbar",
-            fit:true,
-            singleSelect: true
+            fit:true
         });
-        //增加学生按钮
+
+        //增加部门按钮
         $("#addBtn").click(function () {
             $("#editForm").form("clear");
             $("#win").window("open");
         });
-        //提交增加学生表单
+        //提交增加部门表单
         $("#submitBtn").click(function () {
             $('#editForm').form('submit', {
-                url:"/student/register",
+                url:"/dep/register",
 
                 onSubmit: function(){
                     var isValid = $(this).form('validate'); //判断表单是否无效
@@ -133,12 +113,16 @@
             //拿到一个json的数组对象
             var stu = $('#list').datagrid('getSelections');
             if(!stu || stu.length == 0){
-                $.messager.alert('错误提醒','请选择一个学生！','info');
+                $.messager.alert('错误提醒','请选择一个部门！','info');
                 return false;
             }
-            $.messager.confirm('确认','您确认想删除该学生吗？',function(r){
+            var ids = [] ;
+            for(var i =0 ;i<stu.length;i++){
+                ids.push(stu[i].id)
+            }
+            $.messager.confirm('确认','您确认想删除这些部门吗？',function(r){
                 if (r){
-                    $.post('/student/remove',{"id":stu[0].id},function (data) {
+                    $.post('/dep/remove',{"ids":ids.toString()},function (data) {
                         var data = eval('(' + data + ')');  // change the JSON string to javascript object
                         $.messager.show({
                             title:'消息',

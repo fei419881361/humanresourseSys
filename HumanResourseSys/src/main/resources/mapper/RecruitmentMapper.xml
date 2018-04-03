@@ -108,11 +108,11 @@
     insert into recruitment (id, name, gender, 
       dep_id, major, education, 
       work_experience, hire, create_date, 
-      modify_date)
+      modify_date,phone)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{gender,jdbcType=INTEGER}, 
       #{depId,jdbcType=INTEGER}, #{major,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR}, 
       #{workExperience,jdbcType=VARCHAR}, #{hire,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, 
-      #{modifyDate,jdbcType=TIMESTAMP})
+      #{modifyDate,jdbcType=TIMESTAMP} , #{phone,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="entity.Recruitment">
     insert into recruitment
@@ -284,7 +284,17 @@
       work_experience = #{workExperience,jdbcType=VARCHAR},
       hire = #{hire,jdbcType=INTEGER},
       create_date = #{createDate,jdbcType=TIMESTAMP},
-      modify_date = #{modifyDate,jdbcType=TIMESTAMP}
+      modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      phone = #{phone,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="getAllCount" resultType="java.lang.Integer">
+    SELECT COUNT(*) FROM recruitment
+  </select>
+
+  <select id="findAllBySplit" resultMap="BaseResultMap">
+    select * from recruitment limit #{currentPage},#{lineSize}
+  </select>
+
 </mapper>

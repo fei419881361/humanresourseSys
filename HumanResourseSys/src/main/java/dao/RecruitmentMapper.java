@@ -27,4 +27,8 @@ public interface RecruitmentMapper {
     int updateByPrimaryKeySelective(Recruitment record);
 
     int updateByPrimaryKey(Recruitment record);
+
+    Integer getAllCount();
+
+    List<Recruitment> findAllBySplit(@Param("currentPage") Integer currentPage,@Param("lineSize") Integer lineSize);
 }
