@@ -16,4 +16,6 @@ public interface DepartmentService {
     SysDep findByID(Integer depId);
 
     SysDep selectByName(String name);
+
+    boolean update(SysDep sysDep);
 }

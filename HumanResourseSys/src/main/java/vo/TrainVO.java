@@ -1,8 +1,10 @@
-package entity;
+package vo;
+
+import entity.Train;
 
 import java.util.Date;
 
-public class Train {
+public class TrainVO {
     private Integer id;
 
     private Date createDate;
@@ -19,15 +21,18 @@ public class Train {
 
     private String remark;
 
-    private Integer eId;
+    private String trainEmp;
 
-    public Integer geteId() {
-        return eId;
+    public TrainVO(){}
+    public TrainVO(Train entity){
+        this.id = entity.getId();
+        this.trainerName = entity.getTrainerName();
+        this.theme = entity.getTheme();
+        this.time = entity.getTime();
+        this.place = entity.getPlace();
+        this.remark = entity.getRemark();
     }
 
-    public void seteId(Integer eId) {
-        this.eId = eId;
-    }
 
     public Integer getId() {
         return id;
@@ -58,7 +63,7 @@ public class Train {
     }
 
     public void setTrainerName(String trainerName) {
-        this.trainerName = trainerName == null ? null : trainerName.trim();
+        this.trainerName = trainerName;
     }
 
     public String getTheme() {
@@ -66,7 +71,7 @@ public class Train {
     }
 
     public void setTheme(String theme) {
-        this.theme = theme == null ? null : theme.trim();
+        this.theme = theme;
     }
 
     public String getTime() {
@@ -74,7 +79,7 @@ public class Train {
     }
 
     public void setTime(String time) {
-        this.time = time == null ? null : time.trim();
+        this.time = time;
     }
 
     public String getPlace() {
@@ -82,7 +87,7 @@ public class Train {
     }
 
     public void setPlace(String place) {
-        this.place = place == null ? null : place.trim();
+        this.place = place;
     }
 
     public String getRemark() {
@@ -90,6 +95,14 @@ public class Train {
     }
 
     public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
+        this.remark = remark;
+    }
+
+    public String getTrainEmp() {
+        return trainEmp;
+    }
+
+    public void setTrainEmp(String trainEmp) {
+        this.trainEmp = trainEmp;
     }
 }

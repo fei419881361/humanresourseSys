@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import service.DepartmentService;
+import service.EmployeeService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -20,16 +21,22 @@ import java.util.Map;
 public class DepartmentController {
 
     private final DepartmentService departmentService;
+    private final EmployeeService employeeService;
 
     @Autowired
-    public DepartmentController(DepartmentService  departmentService){
+    public DepartmentController(DepartmentService  departmentService,EmployeeService employeeService){
         this.departmentService = departmentService;
+        this.employeeService = employeeService;
     }
 
     @RequestMapping("/findAllBySplit")
     @ResponseBody
     public String findAllBySplit(Integer page,Integer rows){
         List<SysDep> deps = departmentService.findAllBySplit(page,rows);
+        for (int i = 0; i < deps.size(); i++) {
+            int pnum = employeeService.selectByDepName(deps.get(i).getId());
+            deps.get(i).setPeopleNum(pnum);
+        }
         System.out.println(deps.size());
         Integer num = departmentService.getAllCount();
         Map<String , Object> map = new HashMap<>();

@@ -27,4 +27,9 @@ public interface TrainMapper {
     int updateByPrimaryKeySelective(Train record);
 
     int updateByPrimaryKey(Train record);
+
+    Integer getAllCount();
+
+    List<Train> findAllBySplit(@Param("currentPage") Integer currentPage,@Param("lineSize") Integer lineSize);
+
 }

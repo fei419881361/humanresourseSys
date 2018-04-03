@@ -68,6 +68,9 @@ public class EmpoleeController {
             return gson.toJson(map);
         }
 
+
+        departmentService.update(sysDep);
+
         employee.setDepId(sysDep.getId());
         System.out.println("验证emp::\n"+employee.toString());
 

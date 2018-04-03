@@ -31,4 +31,6 @@ public interface EmployeeMapper {
     Integer getAllCount();
 
     List<Employee> findAllBySplit(@Param("currentPage") Integer currentPage,@Param("lineSize") Integer lineSize);
+
+    int selectByDepName(Integer depId);
 }

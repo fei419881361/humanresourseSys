@@ -52,4 +52,9 @@ public class DepartmentServiceImpl implements DepartmentService{
     public SysDep selectByName(String name) {
         return sysDepMapper.selectByName(name);
     }
+
+    @Override
+    public boolean update(SysDep sysDep) {
+        return sysDepMapper.updateByPrimaryKey(sysDep) >0 ;
+    }
 }

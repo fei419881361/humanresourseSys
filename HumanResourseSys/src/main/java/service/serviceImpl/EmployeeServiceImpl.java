@@ -48,4 +48,9 @@ public class EmployeeServiceImpl implements EmployeeService{
     public boolean update(Employee employee) {
         return employeeMapper.updateByPrimaryKey(employee)>0;
     }
+
+    @Override
+    public int selectByDepName(Integer depId) {
+        return employeeMapper.selectByDepName(depId);
+    }
 }
