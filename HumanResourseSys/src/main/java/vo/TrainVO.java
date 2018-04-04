@@ -23,7 +23,10 @@ public class TrainVO {
 
     private String trainEmp;
 
+    private Integer eId;
+
     public TrainVO(){}
+
     public TrainVO(Train entity){
         this.id = entity.getId();
         this.trainerName = entity.getTrainerName();
@@ -31,8 +34,16 @@ public class TrainVO {
         this.time = entity.getTime();
         this.place = entity.getPlace();
         this.remark = entity.getRemark();
+        this.eId = entity.getEId();
     }
 
+    public Integer geteId() {
+        return eId;
+    }
+
+    public void seteId(Integer eId) {
+        this.eId = eId;
+    }
 
     public Integer getId() {
         return id;

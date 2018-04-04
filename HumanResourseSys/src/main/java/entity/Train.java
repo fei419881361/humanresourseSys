@@ -1,5 +1,7 @@
 package entity;
 
+import vo.TrainVO;
+
 import java.util.Date;
 
 public class Train {
@@ -21,11 +23,23 @@ public class Train {
 
     private Integer eId;
 
-    public Integer geteId() {
+    public Train(){}
+    public Train(TrainVO vo) {
+        this.id = vo.getId();
+        this.trainerName = vo.getTrainerName();
+        this.theme = vo.getTheme();
+        this.time = vo.getTime();
+        this.place = vo.getPlace();
+        this.remark = vo.getRemark();
+        this.eId = vo.geteId();
+    }
+
+
+    public Integer getEId() {
         return eId;
     }
 
-    public void seteId(Integer eId) {
+    public void setEId(Integer eId) {
         this.eId = eId;
     }
 

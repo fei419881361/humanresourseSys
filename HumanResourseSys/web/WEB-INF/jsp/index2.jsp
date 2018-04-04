@@ -64,7 +64,7 @@
         </div>
         <div title="培训信息管理" data-options="iconCls:'icon-add'" style="overflow: auto;padding: 10px">
             <ul>
-                <li><a href="javascript:void(0)" pageUrl="upClassTable.jsp">培训信息列表</a></li>
+                <li><a href="javascript:void(0)" pageUrl="lookTra.jsp">培训信息列表</a></li>
             </ul>
         </div>
         <div title="奖惩管理" data-options="iconCls:'icon-add'" style="overflow: auto;padding: 10px">

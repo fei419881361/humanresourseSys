@@ -105,10 +105,10 @@
   <insert id="insert" parameterType="entity.Train">
     insert into train (id, create_date, modify_date, 
       trainer_name, theme, time, 
-      place, remark)
+      place, remark,e_id)
     values (#{id,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, #{modifyDate,jdbcType=TIMESTAMP}, 
       #{trainerName,jdbcType=VARCHAR}, #{theme,jdbcType=VARCHAR}, #{time,jdbcType=VARCHAR}, 
-      #{place,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+      #{place,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR},#{eId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="entity.Train">
     insert into train
@@ -212,7 +212,8 @@
       theme = #{record.theme,jdbcType=VARCHAR},
       time = #{record.time,jdbcType=VARCHAR},
       place = #{record.place,jdbcType=VARCHAR},
-      remark = #{record.remark,jdbcType=VARCHAR}
+      remark = #{record.remark,jdbcType=VARCHAR},
+      e_id = #{record.eId,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -252,7 +253,17 @@
       theme = #{theme,jdbcType=VARCHAR},
       time = #{time,jdbcType=VARCHAR},
       place = #{place,jdbcType=VARCHAR},
-      remark = #{remark,jdbcType=VARCHAR}
+      remark = #{remark,jdbcType=VARCHAR},
+      e_id = #{eId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="findAllBySplit" resultMap="BaseResultMap">
+    select * from train limit #{currentPage},#{lineSize}
+  </select>
+
+
+  <select id="getAllCount" resultType="java.lang.Integer">
+    SELECT COUNT(*) FROM train
+  </select>
 </mapper>

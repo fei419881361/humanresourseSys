@@ -53,4 +53,14 @@ public class EmployeeServiceImpl implements EmployeeService{
     public int selectByDepName(Integer depId) {
         return employeeMapper.selectByDepName(depId);
     }
+
+    @Override
+    public Employee findByID(Integer integer) {
+        return employeeMapper.selectByPrimaryKey(integer);
+    }
+
+    @Override
+    public Employee selectById(Integer integer) {
+        return employeeMapper.selectByPrimaryKey(integer);
+    }
 }

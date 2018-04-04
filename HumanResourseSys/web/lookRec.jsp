@@ -88,6 +88,10 @@
 
 <script type="text/javascript">
     $(function () {
+        var flag = 0;
+        var add = "/rec/register";
+        var update = "/rec/update";
+
         $('#list').datagrid({
             url:'/rec/findAllBySplit',
             columns:[[
@@ -112,13 +116,20 @@
 
         //增加员工按钮
         $("#addBtn").click(function () {
+            flag = 1;
             $("#editForm").form("clear");
             $("#win").window("open");
         });
         //提交增加员工表单
         $("#submitBtn").click(function () {
+            var path = ""
+            if(flag == 1){
+                path = add;
+            }else{
+                path = update;
+            }
             $('#editForm').form('submit', {
-                url:"/rec/register",
+                url:path,
 
                 onSubmit: function(){
                     var isValid = $(this).form('validate'); //判断表单是否无效
@@ -180,7 +191,7 @@
 
 
         $("#updateBtn").click(function () {
-
+            flag = 0;
             var rc = $('#list').datagrid('getSelected');
             if(!rc){
                 $.messager.alert('错误提醒','请选择一条记录！','info');
@@ -201,30 +212,6 @@
             $("#win").window("open");
         });
 
-        //点击弹框确认
-        $("#submitBtn").click(function () {
-            $('#editForm').form('submit', {
-                url:"/rec/update",
-                onSubmit: function(){
-                    var isValid = $(this).form('validate'); //判断表单是否无效
-                    return isValid;	// 返回false终止表单提交
-                },
-                success:function(data){
-                    var data = eval('(' + data + ')');  // change the JSON string to javascript object
-                    $.messager.show({
-                        title:'消息',
-                        msg:data.message,
-                        timeout:3000,
-                        showType:'slide',
-                        height:120,
-                        width:200
-                    });
-                    $('#list').datagrid('reload');//刷新表格
-                    $("#win").window("close");
-                }
-            });
-
-        });
     })
 
 

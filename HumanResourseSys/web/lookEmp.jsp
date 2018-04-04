@@ -36,7 +36,7 @@
                 </tr>
 
                 <tr class="mTr">
-                    <td>生日：</td><td><input  data-options="required:true,validType:'length[0,20]'" class="easyui-validatebox" type ="text" name ="birthday" id="birthday"/></td>
+                    <td>生日：</td><td><input  data-options="required:true,validType:'length[0,20]'" class="easyui-validatebox" type ="date" name ="birthday" id="birthday"/></td>
                 </tr>
 
                 <tr class="mTr">
@@ -77,6 +77,7 @@
 </div>
 
 
+
 <table id="list"></table>
 
 <div id="toolbar">
@@ -87,6 +88,12 @@
 
 <script type="text/javascript">
     $(function () {
+
+        var flag = 0;
+        var update = "/emp/update";
+        var add = "/emp/register";
+
+
         $('#list').datagrid({
             url:'/emp/findAllBySplit',
             columns:[[
@@ -111,13 +118,21 @@
 
         //增加员工按钮
         $("#addBtn").click(function () {
+            flag = 1;
             $("#editForm").form("clear");
             $("#win").window("open");
         });
-        //提交增加员工表单
+
+        //提交表单
         $("#submitBtn").click(function () {
+            var path =""
+            if(flag == 1){
+                path = add;
+            }else {
+                path = update;
+            }
             $('#editForm').form('submit', {
-                url:"/emp/register",
+                url:path,
 
                 onSubmit: function(){
                     var isValid = $(this).form('validate'); //判断表单是否无效
@@ -179,13 +194,12 @@
 
 
         $("#updateBtn").click(function () {
-
+            flag = 0;
             var rc = $('#list').datagrid('getSelected');
             if(!rc){
                 $.messager.alert('错误提醒','请选择一条记录！','info');
                 return false;
             }
-            console.log(rc);
             $("#id").val(rc.id);
             $("#name").val(rc.name);
             $("#birthday").val(rc.birthday);
@@ -203,30 +217,6 @@
             $("#win").window("open");
         });
 
-        //点击弹框确认
-        $("#submitBtn").click(function () {
-            $('#editForm').form('submit', {
-                url:"/emp/update",
-                onSubmit: function(){
-                    var isValid = $(this).form('validate'); //判断表单是否无效
-                    return isValid;	// 返回false终止表单提交
-                },
-                success:function(data){
-                    var data = eval('(' + data + ')');  // change the JSON string to javascript object
-                    $.messager.show({
-                        title:'消息',
-                        msg:data.message,
-                        timeout:3000,
-                        showType:'slide',
-                        height:120,
-                        width:200
-                    });
-                    $('#list').datagrid('reload');//刷新表格
-                    $("#win").window("close");
-                }
-            });
-
-        });
     })
 
 

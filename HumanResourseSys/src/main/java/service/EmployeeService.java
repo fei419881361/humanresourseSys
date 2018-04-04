@@ -17,4 +17,8 @@ public interface EmployeeService {
     boolean update(Employee employee);
 
     int selectByDepName(Integer depId);
+
+    Employee findByID(Integer integer);
+
+    Employee selectById(Integer integer);
 }
