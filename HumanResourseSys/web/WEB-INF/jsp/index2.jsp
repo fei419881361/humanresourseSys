@@ -69,12 +69,12 @@
         </div>
         <div title="奖惩管理" data-options="iconCls:'icon-add'" style="overflow: auto;padding: 10px">
             <ul>
-                <li><a href="javascript:void(0)" pageUrl="upClassTable.jsp">奖惩列表</a></li>
+                <li><a href="javascript:void(0)" pageUrl="lookRP.jsp">奖惩列表</a></li>
             </ul>
         </div>
         <div title="薪资管理" data-options="iconCls:'icon-add'" style="overflow: auto;padding: 10px">
             <ul>
-                <li><a href="javascript:void(0)" pageUrl="upClassTable.jsp">员工薪资列表</a></li>
+                <li><a href="javascript:void(0)" pageUrl="lookSal.jsp">员工薪资列表</a></li>
             </ul>
         </div>
         <div title="系统管理" data-options="iconCls:'icon-add'" style="overflow: auto;padding: 10px">

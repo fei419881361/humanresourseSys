@@ -45,7 +45,7 @@ public class RewardsPunishmentServiceImpl implements RewardsPunishmentService {
     }
 
     @Override
-    public boolean update(Train train) {
-        return trainMapper.updateByPrimaryKey(train) > 0;
+    public boolean update(RewardsPunishment rewardsPunishment) {
+        return rewardsPunishmentMapper.updateByPrimaryKey(rewardsPunishment) > 0;
     }
 }

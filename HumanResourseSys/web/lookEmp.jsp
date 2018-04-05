@@ -205,7 +205,7 @@
             $("#birthday").val(rc.birthday);
             $("#depName").val(rc.depName);
             $("#education").val(rc.education);
-            $("#gender").val(rc.gender);
+            $("#bState").val(rc.gender);
             $("#idCard").val(rc.idCard);
             $("#major").val(rc.major);
             $("#phone").val(rc.phone);

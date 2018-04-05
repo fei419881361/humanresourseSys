@@ -107,11 +107,11 @@
   <insert id="insert" parameterType="entity.Salary">
     insert into salary (id, create_date, modify_date, 
       base_pay, overtime_pay, misstime_pay, 
-      attendance_pay, insurance_pay, emp_id
+      attendance_pay, insurance_pay, emp_id,time
       )
     values (#{id,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, #{modifyDate,jdbcType=TIMESTAMP}, 
       #{basePay,jdbcType=DOUBLE}, #{overtimePay,jdbcType=DOUBLE}, #{misstimePay,jdbcType=DOUBLE}, 
-      #{attendancePay,jdbcType=DOUBLE}, #{insurancePay,jdbcType=DOUBLE}, #{empId,jdbcType=INTEGER}
+      #{attendancePay,jdbcType=DOUBLE}, #{insurancePay,jdbcType=DOUBLE}, #{empId,jdbcType=INTEGER},#{time,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="entity.Salary">
@@ -270,7 +270,17 @@
       misstime_pay = #{misstimePay,jdbcType=DOUBLE},
       attendance_pay = #{attendancePay,jdbcType=DOUBLE},
       insurance_pay = #{insurancePay,jdbcType=DOUBLE},
-      emp_id = #{empId,jdbcType=INTEGER}
+      emp_id = #{empId,jdbcType=INTEGER},
+      time = #{time,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="findAllBySplit" resultMap="BaseResultMap">
+    select * from salary limit #{currentPage},#{lineSize}
+  </select>
+
+
+  <select id="getAllCount" resultType="java.lang.Integer">
+    SELECT COUNT(*) FROM salary
+  </select>
 </mapper>

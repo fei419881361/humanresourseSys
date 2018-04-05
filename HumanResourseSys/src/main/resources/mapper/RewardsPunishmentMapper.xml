@@ -255,4 +255,13 @@
       modify_date = #{modifyDate,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="findAllBySplit" resultMap="BaseResultMap">
+    select * from rewards_punishment limit #{currentPage},#{lineSize}
+  </select>
+
+
+  <select id="getAllCount" resultType="java.lang.Integer">
+    SELECT COUNT(*) FROM rewards_punishment
+  </select>
 </mapper>

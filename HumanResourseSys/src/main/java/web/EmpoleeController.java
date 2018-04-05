@@ -56,6 +56,23 @@ public class EmpoleeController {
         return gs;
     }
 
+    @RequestMapping(value = "findById",produces = "text/html;charset=UTF-8;")
+    @ResponseBody
+    public String findById(Integer id){
+        Employee employee = employeeService.findByID(id);
+        SysDep sysDep = departmentService.findByID(employee.getDepId());
+        Map<String,Object> map = new HashMap<>();
+        if (employee != null && sysDep != null) {
+            EmployeeVO vo = new EmployeeVO(employee);
+            vo.setDepName(sysDep.getName());
+            map.put("message","查找员工成功");
+            map.put("e",vo);
+        }else {
+            map.put("message","查找员工失败！");
+        }
+        return new Gson().toJson(map);
+    }
+
     @RequestMapping(value = "/register",produces = "text/html;charset=UTF-8;")
     @ResponseBody
     public String register(EmployeeVO employeeVO, HttpServletRequest httpServletRequest ){

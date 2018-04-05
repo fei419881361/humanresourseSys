@@ -27,4 +27,8 @@ public interface SalaryMapper {
     int updateByPrimaryKeySelective(Salary record);
 
     int updateByPrimaryKey(Salary record);
+
+    Integer getAllCount();
+
+    List<Salary> findAllBySplit(@Param("currentPage") Integer currentPage,@Param("lineSize") Integer lineSize);
 }

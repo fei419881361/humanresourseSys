@@ -27,4 +27,8 @@ public interface RewardsPunishmentMapper {
     int updateByPrimaryKeySelective(RewardsPunishment record);
 
     int updateByPrimaryKey(RewardsPunishment record);
+
+    Integer getAllCount();
+
+    List<RewardsPunishment> findAllBySplit(@Param("currentPage") Integer currentPage,@Param("lineSize") Integer lineSize);
 }
