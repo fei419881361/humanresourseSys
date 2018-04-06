@@ -11,6 +11,7 @@ import service.EmployeeService;
 import service.SalaryService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -102,6 +103,35 @@ public class SalaryController {
         }
 
         return gson.toJson(map);
+    }
+
+    @RequestMapping(value = "/find",produces = "text/html;charset=UTF-8;")
+    @ResponseBody
+    public String find(Integer iid , String ename){
+        Map<String,Object> map = new HashMap<>();
+        List<Salary> salaryList = new ArrayList<>();
+        if(iid!=null){
+            System.out.println("salar iid"+iid);
+            Salary salary = salaryService.find(iid);
+            salaryList.add(salary);
+        }
+        else if(ename!=null){
+            Employee employee = employeeService.findByName(ename);
+            System.out.println("salar emp -->"+employee.getId());
+            if (employee != null) {
+                List<Salary> salaries = salaryService.findByEId(employee.getId());
+                System.out.println("salar size -->"+salaries.size());
+                if(salaries != null){
+                    for (int i = 0; i < salaries.size(); i++) {
+                        salaryList.add(salaries.get(i));
+                    }
+                }
+            }
+        }
+        map.put("total",salaryList.size());
+        map.put("rows",salaryList);
+        map.put("message","搜索完毕");
+        return new Gson().toJson(map);
     }
 
 }

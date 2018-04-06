@@ -21,4 +21,6 @@ public interface EmployeeService {
     Employee findByID(Integer integer);
 
     Employee selectById(Integer integer);
+
+    Employee findByName(String ename);
 }

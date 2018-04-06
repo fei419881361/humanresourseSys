@@ -23,8 +23,32 @@ public class AdminUser {
 
     private String password;
 
-    private Integer 
-permission;
+    private String permission;
+
+    public String getPermission() {
+        return permission;
+    }
+
+    public void setPermission(String permission) {
+        this.permission = permission;
+    }
+
+    @Override
+    public String toString() {
+        return "AdminUser{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", remark='" + remark + '\'' +
+                ", status=" + status +
+                ", operatorId=" + operatorId +
+                ", modifyDate=" + modifyDate +
+                ", createDate=" + createDate +
+                ", loginName='" + loginName + '\'' +
+                ", password='" + password + '\'' +
+                ", permission=" + permission +
+                '}';
+    }
 
     public Integer getId() {
         return id;
@@ -106,11 +130,11 @@ permission;
         this.password = password == null ? null : password.trim();
     }
 
-    public Integer getpermission() {
+    public String getpermission() {
         return permission;
     }
 
-    public void setpermission(Integer permission) {
+    public void setpermission(String permission) {
         this.permission = permission;
     }
 }

@@ -12,9 +12,7 @@
     <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
     <result column="login_name" jdbcType="VARCHAR" property="loginName" />
     <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="
-permission" jdbcType="INTEGER" property="
-permission" />
+    <result column="permission" jdbcType="VARCHAR" property="permission" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -76,29 +74,9 @@ permission" />
   </sql>
   <sql id="Base_Column_List">
     id, name, phone, remark, status, operator_id, modify_date, create_date, login_name, 
-    password, 
-permission
+    password, permission
   </sql>
-  <select id="selectByExample" parameterType="entity.AdminUserExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from admin_user
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from admin_user
-    where id = #{id,jdbcType=INTEGER}
-  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from admin_user
     where id = #{id,jdbcType=INTEGER}
@@ -113,13 +91,11 @@ permission
     insert into admin_user (id, name, phone, 
       remark, status, operator_id, 
       modify_date, create_date, login_name, 
-      password, 
-permission)
+      password, permission)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
       #{remark,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{operatorId,jdbcType=INTEGER}, 
       #{modifyDate,jdbcType=TIMESTAMP}, #{createDate,jdbcType=TIMESTAMP}, #{loginName,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{
-permission,jdbcType=INTEGER})
+      #{password,jdbcType=VARCHAR}, #{permission,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="entity.AdminUser">
     insert into admin_user
@@ -154,10 +130,8 @@ permission,jdbcType=INTEGER})
       <if test="password != null">
         password,
       </if>
-      <if test="
-permission != null">
-        
-permission,
+      <if test="permission != null">
+        permission,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -191,10 +165,8 @@ permission,
       <if test="password != null">
         #{password,jdbcType=VARCHAR},
       </if>
-      <if test="
-permission != null">
-        #{
-permission,jdbcType=INTEGER},
+      <if test="permission != null">
+        #{permission,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -237,11 +209,9 @@ permission,jdbcType=INTEGER},
       <if test="record.password != null">
         password = #{record.password,jdbcType=VARCHAR},
       </if>
-      <if test="record.
-permission != null">
+      <if test="record.permission != null">
         
-permission = #{record.
-permission,jdbcType=INTEGER},
+permission = #{record.permission,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -260,9 +230,7 @@ permission,jdbcType=INTEGER},
       create_date = #{record.createDate,jdbcType=TIMESTAMP},
       login_name = #{record.loginName,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
-      
-permission = #{record.
-permission,jdbcType=INTEGER}
+      permission = #{record.permission,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -300,8 +268,7 @@ permission,jdbcType=INTEGER}
       <if test="
 permission != null">
         
-permission = #{
-permission,jdbcType=INTEGER},
+permission = #{permission,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -317,9 +284,7 @@ permission,jdbcType=INTEGER},
       create_date = #{createDate,jdbcType=TIMESTAMP},
       login_name = #{loginName,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
-      
-permission = #{
-permission,jdbcType=INTEGER}
+      permission = #{permission,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 
@@ -330,5 +295,14 @@ permission,jdbcType=INTEGER}
     admin_user a
     WHERE
     a.login_name = #{loginName} AND a.password = #{passwd}
+  </select>
+
+  <select id="findAllBySplit" resultMap="BaseResultMap">
+    select * from admin_user limit #{currentPage},#{lineSize}
+  </select>
+
+
+  <select id="getAllCount" resultType="java.lang.Integer">
+    SELECT COUNT(*) FROM admin_user
   </select>
 </mapper>

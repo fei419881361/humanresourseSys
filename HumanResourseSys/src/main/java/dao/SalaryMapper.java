@@ -31,4 +31,6 @@ public interface SalaryMapper {
     Integer getAllCount();
 
     List<Salary> findAllBySplit(@Param("currentPage") Integer currentPage,@Param("lineSize") Integer lineSize);
+
+    List<Salary> findByEId(Integer eid);
 }

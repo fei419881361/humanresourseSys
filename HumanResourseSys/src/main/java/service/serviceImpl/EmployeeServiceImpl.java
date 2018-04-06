@@ -63,4 +63,9 @@ public class EmployeeServiceImpl implements EmployeeService{
     public Employee selectById(Integer integer) {
         return employeeMapper.selectByPrimaryKey(integer);
     }
+
+    @Override
+    public Employee findByName(String ename) {
+        return employeeMapper.selectByName(ename);
+    }
 }

@@ -14,4 +14,8 @@ public interface SalaryService {
     boolean register(Salary salary);
 
     boolean update(Salary salary);
+
+    Salary find(Integer id);
+
+    List<Salary> findByEId(Integer id);
 }

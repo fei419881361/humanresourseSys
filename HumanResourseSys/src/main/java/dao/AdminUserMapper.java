@@ -29,4 +29,8 @@ public interface AdminUserMapper {
     int updateByPrimaryKey(AdminUser record);
 
     AdminUser selectByLoginNameAndPasswd(@Param("loginName") String loginName,@Param("passwd") String passwd);
+
+    Integer getAllCount();
+
+    List<AdminUser> findAllBySplit(@Param("currentPage") Integer currentPage,@Param("lineSize") Integer lineSize);
 }

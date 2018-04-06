@@ -66,8 +66,8 @@
     <div align="center" style="padding-top: 20px">
         <form id = "editForm2"  method = "post" enctype="multipart/form-data">
             <div id="tb" style="padding:3px">
-                <span>Item ID:</span>
-                <input id="itemid" style="line-height:26px;border:1px solid #ccc">
+                <span>编号:</span>
+                <input id="iid" style="line-height:26px;border:1px solid #ccc">
                 <span>员工姓名:</span>
                 <input id="ename" style="line-height:26px;border:1px solid #ccc">
                 <a href="#" class="easyui-linkbutton" plain="true" id="bserch">Search</a>
@@ -108,8 +108,20 @@
 <script type="text/javascript">
     $(function () {
         $('#search').click(function () {
+
             $("#win2").window("open");
-        })
+        });
+
+        $("#bserch").click(function(){
+            $('#tt').datagrid('loadData',{total:0,rows:[]});
+            var iid = $('#iid').val();
+            var ename = $('#ename').val();
+
+            $('#tt').datagrid('load',{
+                iid: $('#iid').val(),
+                ename: $('#ename').val()
+            });
+        });
 
         var flag = 0;
         var update = "/sal/update";
@@ -175,8 +187,6 @@
         $("#resetBtn").click(function () {
             $("#editForm").form("reset");
         });
-
-
 
         //删除
         $('#removeBtn').bind('click', function(){

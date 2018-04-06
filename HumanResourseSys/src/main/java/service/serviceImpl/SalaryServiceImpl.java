@@ -48,4 +48,14 @@ public class SalaryServiceImpl implements SalaryService{
     public boolean update(Salary salary) {
         return salaryMapper.updateByPrimaryKey(salary) > 0;
     }
+
+    @Override
+    public Salary find(Integer id) {
+        return salaryMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public List<Salary> findByEId(Integer id) {
+        return salaryMapper.findByEId(id);
+    }
 }

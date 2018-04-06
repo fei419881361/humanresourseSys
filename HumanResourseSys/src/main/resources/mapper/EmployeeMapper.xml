@@ -379,4 +379,8 @@
   <select id="selectByDepName" resultType="java.lang.Integer">
     SELECT COUNT(*) FROM employee WHERE dep_id = #{depId}
   </select>
+
+  <select id="selectByName" resultType="entity.Employee">
+    select * from employee WHERE name = #{name}
+  </select>
 </mapper>

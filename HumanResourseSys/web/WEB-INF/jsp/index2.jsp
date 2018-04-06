@@ -79,7 +79,7 @@
         </div>
         <div title="系统管理" data-options="iconCls:'icon-add'" style="overflow: auto;padding: 10px">
             <ul>
-                <li><a href="javascript:void(0)" pageUrl="lookClassTable.jsp">管理员列表</a></li>
+                <li><a href="javascript:void(0)" pageUrl="lookAdm.jsp">管理员列表</a></li>
             </ul>
         </div>
     </div>
